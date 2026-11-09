@@ -963,4 +963,267 @@ img, video {
     gap: 1rem;
     text-align: center;
   }
+
+  .kd-nav.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--kd-border-grey);
+    padding: 2rem 1.5rem;
+    gap: 1.25rem;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .kd-nav.open .kd-nav-link {
+    color: var(--kd-black);
+    font-size: 0.95rem;
+  }
+}
+
+/* ==========================================================================
+   Architectural Subpage Additions (Catalog, Solutions, About, Contact)
+   ========================================================================== */
+
+.kd-nav-link.active {
+  color: var(--kd-white);
+  font-weight: 700;
+}
+
+.kd-nav-link.active::after {
+  width: 100%;
+}
+
+.kd-header.scrolled .kd-nav-link.active {
+  color: var(--kd-black);
+}
+
+.kd-subpage-hero {
+  background-color: var(--kd-black);
+  color: var(--kd-white);
+  padding: 10rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.kd-subpage-hero-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) contrast(1.2);
+}
+
+.kd-subpage-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+}
+
+.kd-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.kd-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+}
+
+@media (max-width: 1024px) {
+  .kd-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .kd-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .kd-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Spec Tables */
+.kd-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--kd-border-grey);
+  background: var(--kd-white);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.kd-spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.92rem;
+}
+
+.kd-spec-table th {
+  background-color: var(--kd-light-grey);
+  color: var(--kd-black);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--kd-border-grey);
+}
+
+.kd-spec-table td {
+  padding: 0.95rem 1.25rem;
+  border-bottom: 1px solid var(--kd-border-grey);
+  color: var(--kd-charcoal);
+}
+
+.kd-spec-table tr:last-child td {
+  border-bottom: none;
+}
+
+.kd-spec-table tr:hover td {
+  background-color: #fafbfc;
+}
+
+/* Panel & Card Components */
+.kd-panel-card {
+  background: var(--kd-white);
+  border: 1px solid var(--kd-border-grey);
+  padding: 2.25rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.kd-panel-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--kd-charcoal);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.kd-panel-card-dark {
+  background: var(--kd-black);
+  color: var(--kd-white);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 2.25rem;
+}
+
+.kd-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.kd-checklist li {
+  padding: 0.55rem 0 0.55rem 1.75rem;
+  position: relative;
+  line-height: 1.6;
+  color: var(--kd-charcoal);
+}
+
+.kd-checklist li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  color: var(--kd-black);
+  font-weight: 700;
+}
+
+/* Form Components */
+.kd-form-card {
+  background: var(--kd-white);
+  border: 1px solid var(--kd-border-grey);
+  padding: 2.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.kd-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .kd-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.kd-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.kd-form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.kd-form-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--kd-black);
+}
+
+.kd-form-label .req {
+  color: #d93838;
+}
+
+.kd-form-control {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background-color: var(--kd-offwhite);
+  border: 1px solid var(--kd-border-grey);
+  border-radius: 0;
+  color: var(--kd-black);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+.kd-form-control:focus {
+  outline: none;
+  background-color: var(--kd-white);
+  border-color: var(--kd-black);
+  box-shadow: 0 0 0 1px var(--kd-black);
+}
+
+textarea.kd-form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.kd-form-status {
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--kd-black);
+  background-color: var(--kd-light-grey);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.kd-form-status.success {
+  border-left-color: #10b981;
+  background-color: #ecfdf5;
+  color: #065f46;
+}
+
+.kd-form-status.error {
+  border-left-color: #ef4444;
+  background-color: #fef2f2;
+  color: #991b1b;
 }
