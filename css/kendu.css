@@ -1,0 +1,966 @@
+/* ==========================================================================
+   KENDU-INSPIRED ARCHITECTURAL & SPATIAL SCAFFOLD DESIGN SYSTEM
+   Monochrome white, off-white, and neutral grey palette.
+   Smooth flex-grow image accordion transitions, background video loops,
+   and minimal geometric typography.
+   ========================================================================== */
+
+:root {
+  /* Strictly Monochrome White & Grey Palette */
+  --kd-white: #ffffff;
+  --kd-offwhite: #f8f9fa;
+  --kd-light-grey: #f0f2f5;
+  --kd-border-grey: #e5e7eb;
+  --kd-mid-grey: #9ca3af;
+  --kd-charcoal: #4b5563;
+  --kd-dark-grey: #1f2937;
+  --kd-black: #0b0d11;
+
+  --kd-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --kd-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --kd-transition-fast: 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  --kd-transition-smooth: 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+  --kd-transition-slow: 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+
+  --kd-container-max: 1440px;
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--kd-font-sans);
+  font-size: 16px;
+  color: var(--kd-dark-grey);
+  background-color: var(--kd-white);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--kd-transition-fast);
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+.kd-container {
+  width: 100%;
+  max-width: var(--kd-container-max);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ==========================================================================
+   Typography & Utility Elements
+   ========================================================================== */
+
+.kd-kicker {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--kd-charcoal);
+  margin-bottom: 1rem;
+}
+
+.kd-kicker-light {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.kd-title-xl {
+  font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--kd-white);
+}
+
+.kd-title-lg {
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--kd-black);
+}
+
+.kd-title-md {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--kd-black);
+}
+
+.kd-lead {
+  font-size: 1.2rem;
+  color: var(--kd-charcoal);
+  line-height: 1.7;
+  max-width: 780px;
+}
+
+.kd-text-center {
+  text-align: center;
+}
+
+.kd-mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Divider Line */
+.kd-divider {
+  width: 60px;
+  height: 2px;
+  background-color: var(--kd-black);
+  margin: 1.25rem auto 0;
+}
+
+/* Buttons (Kendu Animated Underline / Minimal Style) */
+.kd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 0.9rem 1.8rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--kd-transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.kd-btn-white {
+  background-color: var(--kd-white);
+  color: var(--kd-black);
+  border-color: var(--kd-white);
+}
+
+.kd-btn-white:hover {
+  background-color: transparent;
+  color: var(--kd-white);
+}
+
+.kd-btn-outline-white {
+  background-color: transparent;
+  color: var(--kd-white);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.kd-btn-outline-white:hover {
+  background-color: var(--kd-white);
+  color: var(--kd-black);
+  border-color: var(--kd-white);
+}
+
+.kd-btn-dark {
+  background-color: var(--kd-black);
+  color: var(--kd-white);
+  border-color: var(--kd-black);
+}
+
+.kd-btn-dark:hover {
+  background-color: var(--kd-charcoal);
+  border-color: var(--kd-charcoal);
+}
+
+.kd-btn-outline-dark {
+  background-color: transparent;
+  color: var(--kd-black);
+  border-color: var(--kd-black);
+}
+
+.kd-btn-outline-dark:hover {
+  background-color: var(--kd-black);
+  color: var(--kd-white);
+}
+
+/* ==========================================================================
+   Header & Floating Navigation
+   ========================================================================== */
+
+.kd-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 84px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.35s ease, border-color 0.35s ease, height 0.35s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.kd-header.scrolled {
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--kd-border-grey);
+  height: 72px;
+}
+
+.kd-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kd-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--kd-white);
+  transition: color 0.35s ease;
+}
+
+.kd-logo-icon {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--kd-white);
+  display: grid;
+  place-items: center;
+  transition: border-color 0.35s ease;
+}
+
+.kd-logo-icon::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: var(--kd-white);
+  transition: background-color 0.35s ease;
+}
+
+.kd-header.scrolled .kd-logo {
+  color: var(--kd-black);
+}
+
+.kd-header.scrolled .kd-logo-icon {
+  border-color: var(--kd-black);
+}
+
+.kd-header.scrolled .kd-logo-icon::before {
+  background-color: var(--kd-black);
+}
+
+.kd-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.kd-nav-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.4rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.kd-nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--kd-white);
+  transition: width 0.3s ease;
+}
+
+.kd-nav-link:hover::after {
+  width: 100%;
+}
+
+.kd-header.scrolled .kd-nav-link {
+  color: var(--kd-charcoal);
+}
+
+.kd-header.scrolled .kd-nav-link:hover {
+  color: var(--kd-black);
+}
+
+.kd-header.scrolled .kd-nav-link::after {
+  background-color: var(--kd-black);
+}
+
+.kd-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.kd-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--kd-white);
+}
+
+.kd-header.scrolled .kd-menu-toggle {
+  color: var(--kd-black);
+}
+
+/* ==========================================================================
+   Hero Section (Kendu kn-featured-1 Style)
+   Full-screen video background + Centered architectural typography
+   ========================================================================== */
+
+.kd-hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--kd-black);
+  color: var(--kd-white);
+  padding: 6rem 0 4rem;
+}
+
+.kd-video-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.kd-video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.92) contrast(1.05);
+  transform: scale(1.02);
+}
+
+.kd-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 13, 17, 0.35) 0%, rgba(11, 13, 17, 0.15) 45%, rgba(11, 13, 17, 0.5) 100%);
+  z-index: 2;
+}
+
+.kd-hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 960px;
+  text-align: center;
+  padding: 0 1.5rem;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65);
+}
+
+.kd-hero-title {
+  margin-bottom: 1.75rem;
+}
+
+.kd-hero-lead {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+.kd-hero-cta {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.kd-scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.kd-scroll-icon {
+  width: 18px;
+  height: 28px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  position: relative;
+}
+
+.kd-scroll-icon::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 6px;
+  background-color: var(--kd-white);
+  border-radius: 2px;
+  animation: kdScrollWheel 1.8s infinite ease-in-out;
+}
+
+@keyframes kdScrollWheel {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  80% { transform: translate(-50%, 10px); opacity: 0; }
+  100% { transform: translate(-50%, 0); opacity: 0; }
+}
+
+/* ==========================================================================
+   Editorial Statement (Kendu kn-content-section-1 Style)
+   Clean off-white background + high-contrast minimal copy
+   ========================================================================== */
+
+.kd-section {
+  padding: 6.5rem 0;
+}
+
+.kd-section-alt {
+  background-color: var(--kd-offwhite);
+  border-top: 1px solid var(--kd-border-grey);
+  border-bottom: 1px solid var(--kd-border-grey);
+}
+
+.kd-section-dark {
+  background-color: var(--kd-black);
+  color: var(--kd-white);
+}
+
+.kd-statement {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.kd-statement-lead {
+  font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--kd-dark-grey);
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.kd-statement-sub {
+  font-size: 1.05rem;
+  color: var(--kd-charcoal);
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   THE SIGNATURE KENDU EXPANDING ACCORDION SHOWCASE (kn-products Style)
+   Interactive horizontal strips that expand on hover/touch, blurring/focusing
+   and cross-fading details smoothly!
+   ========================================================================== */
+
+.kd-accordion-section {
+  padding: 5rem 0;
+  background-color: var(--kd-white);
+}
+
+.kd-accordion-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.kd-accordion-wrapper {
+  display: flex;
+  height: 72vh;
+  min-height: 520px;
+  max-height: 800px;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--kd-light-grey);
+}
+
+.kd-accordion-panel {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: flex-grow var(--kd-transition-smooth), transform var(--kd-transition-smooth);
+  display: flex;
+  align-items: flex-end;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.kd-accordion-panel:last-child {
+  border-right: none;
+}
+
+/* Hover expansion: hovered panel expands 2.6x while others contract */
+.kd-accordion-panel:hover,
+.kd-accordion-panel.is-active {
+  flex-grow: 2.8;
+}
+
+/* Background image with blur and brightness transition */
+.kd-accordion-bg {
+  position: absolute;
+  inset: -10px;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.6) blur(2px) contrast(1.05);
+  transform: scale(1.08);
+  transition: filter var(--kd-transition-slow), transform var(--kd-transition-slow);
+  z-index: 1;
+}
+
+.kd-accordion-panel:hover .kd-accordion-bg,
+.kd-accordion-panel.is-active .kd-accordion-bg {
+  filter: brightness(0.88) blur(0px) contrast(1.0);
+  transform: scale(1.0);
+}
+
+/* Subtle overlay gradient */
+.kd-accordion-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11, 13, 17, 0.85) 0%, rgba(11, 13, 17, 0.25) 50%, rgba(11, 13, 17, 0.4) 100%);
+  z-index: 2;
+  transition: opacity var(--kd-transition-smooth);
+}
+
+.kd-accordion-panel:hover .kd-accordion-scrim,
+.kd-accordion-panel.is-active .kd-accordion-scrim {
+  background: linear-gradient(to top, rgba(11, 13, 17, 0.92) 0%, rgba(11, 13, 17, 0.15) 60%, rgba(11, 13, 17, 0.3) 100%);
+}
+
+/* Content Container Inside Panel */
+.kd-accordion-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 2.5rem 2rem;
+  color: var(--kd-white);
+  transition: transform var(--kd-transition-smooth);
+}
+
+/* Default state: Compact title */
+.kd-panel-default-title {
+  font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.kd-accordion-panel:hover .kd-panel-default-title,
+.kd-accordion-panel.is-active .kd-panel-default-title {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+}
+
+/* Expanded state: Detailed Title, Subtitle, and Explore Link */
+.kd-panel-expanded-info {
+  opacity: 0;
+  transform: translateY(20px);
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.45s ease 0.15s, transform 0.45s ease 0.15s, max-height 0.45s ease;
+}
+
+.kd-accordion-panel:hover .kd-panel-expanded-info,
+.kd-accordion-panel.is-active .kd-panel-expanded-info {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 280px;
+}
+
+.kd-panel-category {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 0.4rem;
+}
+
+.kd-panel-expanded-title {
+  font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 0.6rem;
+}
+
+.kd-panel-expanded-desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  max-width: 440px;
+}
+
+.kd-panel-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--kd-white);
+  border-bottom: 2px solid var(--kd-white);
+  padding-bottom: 0.2rem;
+}
+
+.kd-panel-action:hover {
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   Modular Systems & Solutions Grid (Kendu kn-content-section-8 Style)
+   Architectural cards with rich photography & hover zoom
+   ========================================================================== */
+
+.kd-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2rem;
+}
+
+.kd-card {
+  position: relative;
+  min-height: 480px;
+  background-color: var(--kd-black);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+.kd-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.7) contrast(1.1);
+  transform: scale(1.0);
+  transition: transform var(--kd-transition-slow), filter var(--kd-transition-smooth);
+  z-index: 1;
+}
+
+.kd-card:hover .kd-card-bg {
+  transform: scale(1.07);
+  filter: brightness(0.85) contrast(1.05);
+}
+
+.kd-card-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11, 13, 17, 0.9) 0%, rgba(11, 13, 17, 0.2) 60%, transparent 100%);
+  z-index: 2;
+}
+
+.kd-card-body {
+  position: relative;
+  z-index: 10;
+  padding: 2.5rem 2rem;
+  color: var(--kd-white);
+  width: 100%;
+}
+
+.kd-card-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 0.5rem;
+}
+
+.kd-card-title {
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.kd-card-desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.kd-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--kd-white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 0.25rem;
+  transition: border-color var(--kd-transition-fast);
+}
+
+.kd-card:hover .kd-card-link {
+  border-color: var(--kd-white);
+}
+
+/* ==========================================================================
+   Client Trust Roster & Minimal Testimonial (kn-content-section-4 & 20)
+   ========================================================================== */
+
+.kd-clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2.5rem;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 0;
+  opacity: 0.8;
+}
+
+.kd-client-item {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kd-charcoal);
+  transition: color var(--kd-transition-fast), transform var(--kd-transition-fast);
+}
+
+.kd-client-item:hover {
+  color: var(--kd-black);
+  transform: translateY(-2px);
+}
+
+.kd-testimonial {
+  max-width: 820px;
+  margin: 3.5rem auto 0;
+  text-align: center;
+  padding: 3rem 2rem;
+  background-color: var(--kd-light-grey);
+  border-radius: 4px;
+}
+
+.kd-quote {
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--kd-dark-grey);
+  margin-bottom: 1.5rem;
+}
+
+.kd-author {
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--kd-black);
+}
+
+.kd-role {
+  font-size: 0.8rem;
+  color: var(--kd-charcoal);
+  margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   Minimal Project Inquiry CTA (Kendu kn-content-section-5 Style)
+   ========================================================================== */
+
+.kd-cta-section {
+  background-color: var(--kd-black);
+  color: var(--kd-white);
+  padding: 6.5rem 0;
+  text-align: center;
+}
+
+.kd-cta-form {
+  max-width: 580px;
+  margin: 2.5rem auto 0;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.kd-input {
+  flex: 1;
+  padding: 1rem 1.4rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--kd-white);
+  outline: none;
+  transition: border-color var(--kd-transition-fast);
+}
+
+.kd-input:focus {
+  border-color: var(--kd-white);
+}
+
+.kd-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.kd-footer {
+  background-color: var(--kd-white);
+  border-top: 1px solid var(--kd-border-grey);
+  padding: 4.5rem 0 2rem;
+  color: var(--kd-charcoal);
+  font-size: 0.9rem;
+}
+
+.kd-footer-grid {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+.kd-footer-brand .kd-logo {
+  color: var(--kd-black);
+  margin-bottom: 1.25rem;
+}
+
+.kd-footer-brand .kd-logo-icon {
+  border-color: var(--kd-black);
+}
+
+.kd-footer-brand .kd-logo-icon::before {
+  background-color: var(--kd-black);
+}
+
+.kd-footer-col h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--kd-black);
+  margin-bottom: 1.25rem;
+}
+
+.kd-footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+.kd-footer-links a:hover {
+  color: var(--kd-black);
+}
+
+.kd-footer-bottom {
+  padding-top: 2rem;
+  border-top: 1px solid var(--kd-border-grey);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--kd-mid-grey);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .kd-accordion-wrapper {
+    flex-direction: column;
+    height: auto;
+    max-height: none;
+  }
+
+  .kd-accordion-panel {
+    min-height: 260px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .kd-accordion-panel:hover,
+  .kd-accordion-panel.is-active {
+    flex-grow: 1;
+    min-height: 380px;
+  }
+
+  .kd-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .kd-nav {
+    display: none;
+  }
+
+  .kd-menu-toggle {
+    display: block;
+  }
+
+  .kd-cta-form {
+    flex-direction: column;
+  }
+
+  .kd-footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kd-footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
